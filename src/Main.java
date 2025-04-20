@@ -1,54 +1,51 @@
+import java.time.LocalDate;
+
 public class Main {
-    public static String calculateLeapYear(int year) {
+    public static void calculateLeapYear(int year) {
         if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
-            return year + " год - високосный";
+            System.out.println(year + " год - високосный");
         } else {
-            return year + " год - не високосный";
+            System.out.println(year + " год - не високосный");
         }
     }
-    private static String painfulUpdate(int clientOS, int clientDeviceYear) {
-        if (clientOS == 0 && clientDeviceYear < 2015) {
-            return "Установите облегченную версию приложения для iOS по ссылке";
-        } else if (clientOS == 0 && clientDeviceYear >= 2015) {
-            return "Установите обычное версию приложения для iOS по ссылке";
-        } else if (clientOS == 1 && clientDeviceYear < 2015) {
-            return "Установите облегченную версию приложения для Android по ссылке";
+
+    private static void painfulUpdate(int clientOS, int clientDeviceYear) {
+        int currentYear = LocalDate.now().getYear();
+        if (clientOS == 0 && clientDeviceYear < currentYear) {
+            System.out.println("Установите облегченную версию приложения для iOS по ссылке");
+        } else if (clientOS == 0 && clientDeviceYear > currentYear) {
+            System.out.println("Установите обычное версию приложения для iOS по ссылке");
+        } else if (clientOS == 1 && clientDeviceYear < currentYear) {
+            System.out.println("Установите облегченную версию приложения для Android по ссылке");
         } else {
-            return "Установите обычное версию приложения для Android по ссылке";
+            System.out.println("Установите обычное версию приложения для Android по ссылке");
         }
     }
-    private static String deliveryDays(int deliveryDistance, int deliveryTime) {
-        if (deliveryDistance >= 100) {
-            return "Доставки нет";
-        } else if (deliveryDistance < 20) {
-            return "Потребуется дней: " + deliveryTime;
-        } else if (deliveryDistance < 60) {
-            return "Потребуется дней: " + (deliveryTime + 1);
-        } else if (deliveryDistance < 100) {
-            return "Потребуется дней: " + (deliveryTime + 2);
+
+    public static void deliveryDays(int deliveryDistance) {
+        int count = 1;
+        if (deliveryDistance > 20 && deliveryDistance <= 60) {
+            count = 2;
+        } else if (deliveryDistance > 60 && deliveryDistance <= 100) {
+            count = 3;
+        } else if (deliveryDistance > 100) {
+            System.out.println("Доставки нет");
+            return;
         }
-        return "";
+        System.out.println("Потребуется дней: " + count);
     }
+
     public static void main(String[] args) {
         System.out.println("Задание №1");
-        int year = 2028;
-        String result = calculateLeapYear(year);
-        System.out.println(result);
+        calculateLeapYear(2024);
         System.out.println();
         System.out.println("Задание №2");
         int clientOS = 0;
-        int clientDeviceYear = 2015;
-        String result2 = painfulUpdate(clientOS, clientDeviceYear);
-        System.out.println(result2);
+        int clientDeviceYear = 2025;
+        painfulUpdate(clientOS, clientDeviceYear);
         System.out.println();
         System.out.println("Задание №3");
         int deliveryDistance = 95;
-        int deliveryTime = 1;
-        String result3 = deliveryDays(deliveryDistance, deliveryTime);
-        System.out.println(result3);
+        deliveryDays(deliveryDistance);
         }
-    }
-
-
-
-
+}
