@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 
 public class Main {
-    public static void calculateLeapYear(int year) {
+    public static void printLeapYear(int year) {
         if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
             System.out.println(year + " год - високосный");
         } else {
@@ -9,7 +9,7 @@ public class Main {
         }
     }
 
-    private static void painfulUpdate(int clientOS, int clientDeviceYear) {
+    private static void installUpdate(int clientOS, int clientDeviceYear) {
         int currentYear = LocalDate.now().getYear();
         if (clientOS == 0 && clientDeviceYear < currentYear) {
             System.out.println("Установите облегченную версию приложения для iOS по ссылке");
@@ -37,12 +37,12 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Задание №1");
-        calculateLeapYear(2024);
+        printLeapYear(2024);
         System.out.println();
         System.out.println("Задание №2");
         int clientOS = 0;
         int clientDeviceYear = 2025;
-        painfulUpdate(clientOS, clientDeviceYear);
+        installUpdate(clientOS, clientDeviceYear);
         System.out.println();
         System.out.println("Задание №3");
         int deliveryDistance = 95;
