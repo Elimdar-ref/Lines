@@ -22,7 +22,7 @@ public class Main {
         }
     }
 
-    public static void deliveryDays(int deliveryDistance) {
+    public static void deliverDays(int deliveryDistance) {
         int count = 1;
         if (deliveryDistance > 20 && deliveryDistance <= 60) {
             count = 2;
@@ -46,6 +46,6 @@ public class Main {
         System.out.println();
         System.out.println("Задание №3");
         int deliveryDistance = 95;
-        deliveryDays(deliveryDistance);
+        deliverDays(deliveryDistance);
         }
 }
