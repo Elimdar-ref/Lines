@@ -22,17 +22,18 @@ public class Main {
         }
     }
 
-    public static void deliverDays(int deliveryDistance) {
+    public static int deliverDays(int deliveryDistance) {
         int count = 1;
-        if (deliveryDistance > 20 && deliveryDistance <= 60) {
+        if (deliveryDistance > 20) {
             count = 2;
-        } else if (deliveryDistance > 60 && deliveryDistance <= 100) {
-            count = 3;
-        } else if (deliveryDistance > 100) {
-            System.out.println("Доставки нет");
-            return;
         }
-        System.out.println("Потребуется дней: " + count);
+        if (deliveryDistance > 60) {
+            count = 3;
+        }
+        if (deliveryDistance > 100) {
+            count = - 1;
+        }
+        return count;
     }
 
     public static void main(String[] args) {
@@ -45,7 +46,12 @@ public class Main {
         installUpdate(clientOS, clientDeviceYear);
         System.out.println();
         System.out.println("Задание №3");
-        int deliveryDistance = 95;
-        deliverDays(deliveryDistance);
+        int deliveryDistance = 19;
+        int count = deliverDays(deliveryDistance);
+        if (count == - 1) {
+            System.out.println("Доставки нет");
+        } else {
+            System.out.printf("Доставка займет %d дней", count);
         }
+    }
 }
